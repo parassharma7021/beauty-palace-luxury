@@ -5,6 +5,7 @@ import {
   Sparkles, Scissors, Palette, Heart, Award, GraduationCap,
   Menu, X, Star, ChevronDown, Users, Clock, ShieldCheck,
 } from "lucide-react";
+import { getRequestOrigin } from "../lib/origin.functions";
 
 const logo = { url: "/assets/logo.png" };
 const founder = { url: "/assets/founder.png" };
@@ -22,40 +23,56 @@ const makeupImg = "/assets/makeup.jpg";
 const academyImg = "/assets/academy.jpg";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Chandigarh Beauty Palace & Training Institute | Luxury Salon in Ambala" },
-      { name: "description", content: "Premium unisex luxury salon & Gills Makeover Academy in Ambala. Bridal makeup, hair, skin, nails, hair patches & professional beauty courses by Suresh Kumar Gill." },
-      { property: "og:title", content: "Chandigarh Beauty Palace & Training Institute" },
-      { property: "og:description", content: "Luxury salon & beauty academy in Ambala — where beauty meets elegance." },
-      { property: "og:url", content: "/" },
-    ],
-    links: [{ rel: "canonical", href: "/" }],
-    scripts: [{
-      type: "application/ld+json",
-      children: JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "BeautySalon",
-        name: "Chandigarh Beauty Palace & Training Institute",
-        image: storefront.url,
-        telephone: "+917206006006",
-        email: "sureshkumargill7@gmail.com",
-        founder: "Suresh Kumar Gill",
-        address: {
-          "@type": "PostalAddress",
-          streetAddress: "108–109, IDS Showroom Complex, Model Town, Urban Estate, Sector 7",
-          addressLocality: "Ambala",
-          addressRegion: "Haryana",
-          postalCode: "134003",
-          addressCountry: "IN",
-        },
-        sameAs: [
-          "https://www.instagram.com/gillsmakeover",
-          "https://www.facebook.com/suresh.gill.56",
-        ],
-      }),
-    }],
-  }),
+  loader: async () => {
+    const origin = await getRequestOrigin();
+    return { origin };
+  },
+  head: ({ loaderData }) => {
+    const origin = loaderData?.origin ?? "";
+    const logoUrl = origin ? `${origin}/assets/logo.png` : "/assets/logo.png";
+    const storefrontUrl = origin ? `${origin}${storefront.url}` : storefront.url;
+    return {
+      meta: [
+        { title: "Chandigarh Beauty Palace & Training Institute | Luxury Salon in Ambala" },
+        { name: "description", content: "Premium unisex luxury salon & Gills Makeover Academy in Ambala. Bridal makeup, hair, skin, nails, hair patches & professional beauty courses by Suresh Kumar Gill." },
+        { property: "og:title", content: "Chandigarh Beauty Palace & Training Institute" },
+        { property: "og:description", content: "Luxury salon & beauty academy in Ambala — where beauty meets elegance." },
+        { property: "og:url", content: "/" },
+        { property: "og:image", content: logoUrl },
+        { property: "og:image:type", content: "image/png" },
+        { property: "og:image:width", content: "417" },
+        { property: "og:image:height", content: "396" },
+        { property: "og:image:alt", content: "Chandigarh Beauty Palace & Training Institute logo" },
+        { name: "twitter:image", content: logoUrl },
+        { name: "twitter:image:alt", content: "Chandigarh Beauty Palace & Training Institute logo" },
+      ],
+      links: [{ rel: "canonical", href: "/" }],
+      scripts: [{
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BeautySalon",
+          name: "Chandigarh Beauty Palace & Training Institute",
+          image: storefrontUrl,
+          telephone: "+917206006006",
+          email: "sureshkumargill7@gmail.com",
+          founder: "Suresh Kumar Gill",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "108–109, IDS Showroom Complex, Model Town, Urban Estate, Sector 7",
+            addressLocality: "Ambala",
+            addressRegion: "Haryana",
+            postalCode: "134003",
+            addressCountry: "IN",
+          },
+          sameAs: [
+            "https://www.instagram.com/gillsmakeover",
+            "https://www.facebook.com/suresh.gill.56",
+          ],
+        }),
+      }],
+    };
+  },
   component: HomePage,
 });
 
