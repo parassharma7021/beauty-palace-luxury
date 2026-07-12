@@ -6,20 +6,20 @@ import {
   Menu, X, Star, ChevronDown, Users, Clock, ShieldCheck,
 } from "lucide-react";
 
-import logo from "@/assets/logo.png.asset.json";
-import founder from "@/assets/founder.png.asset.json";
-import storefront from "@/assets/storefront.png.asset.json";
-import int1 from "@/assets/int1.png.asset.json";
-import int2 from "@/assets/int2.png.asset.json";
-import int3 from "@/assets/int3.png.asset.json";
-import int4 from "@/assets/int4.png.asset.json";
-import int5 from "@/assets/int5.png.asset.json";
-import int6 from "@/assets/int6.png.asset.json";
-import nails from "@/assets/nails.png.asset.json";
-import heroImg from "@/assets/hero.jpg";
-import bridalImg from "@/assets/bridal.jpg";
-import makeupImg from "@/assets/makeup.jpg";
-import academyImg from "@/assets/academy.jpg";
+const logo = { url: "/assets/logo.png" };
+const founder = { url: "/assets/founder.png" };
+const storefront = { url: "/assets/storefront.png" };
+const int1 = { url: "/assets/int1.png" };
+const int2 = { url: "/assets/int2.png" };
+const int3 = { url: "/assets/int3.png" };
+const int4 = { url: "/assets/int4.png" };
+const int5 = { url: "/assets/int5.png" };
+const int6 = { url: "/assets/int6.png" };
+const nails = { url: "/assets/nails.png" };
+const heroImg = "/assets/hero.jpg";
+const bridalImg = "/assets/bridal.jpg";
+const makeupImg = "/assets/makeup.jpg";
+const academyImg = "/assets/academy.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
