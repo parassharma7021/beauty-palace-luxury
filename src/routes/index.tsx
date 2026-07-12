@@ -137,11 +137,11 @@ function Nav() {
   return (
     <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${scrolled ? "glass shadow-soft py-2" : "py-4"}`}>
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6">
-        <a href="#top" className="flex items-center gap-3">
-          <img src={logo.url} alt="Gills Makeover Academy" className="h-11 w-11 rounded-full object-cover ring-1 ring-rose-gold/40" />
-          <div className="hidden sm:block leading-tight">
-            <div className="font-serif text-base font-semibold text-plum">Chandigarh Beauty Palace</div>
-            <div className="text-[10px] tracking-[0.25em] text-rose-gold-deep uppercase">& Training Institute</div>
+        <a href="#top" className="flex min-w-0 items-center gap-3">
+          <img src={logo.url} alt="Gills Makeover Academy" className="h-11 w-11 shrink-0 rounded-full object-cover ring-1 ring-rose-gold/40" />
+          <div className="min-w-0 leading-tight">
+            <div className="truncate font-serif text-sm font-semibold text-plum sm:text-base">Chandigarh Beauty Palace</div>
+            <div className="hidden text-[10px] tracking-[0.25em] text-rose-gold-deep uppercase sm:block">& Training Institute</div>
           </div>
         </a>
         <nav className="hidden lg:flex items-center gap-8">
