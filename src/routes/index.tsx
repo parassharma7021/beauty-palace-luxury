@@ -5,6 +5,7 @@ import {
   Sparkles, Scissors, Palette, Heart, Award, GraduationCap,
   Menu, X, Star, ChevronDown, Users, Clock, ShieldCheck,
 } from "lucide-react";
+import { getRequestOrigin } from "../lib/origin.functions";
 
 const logo = { url: "/assets/logo.png" };
 const founder = { url: "/assets/founder.png" };
@@ -22,13 +23,24 @@ const makeupImg = "/assets/makeup.jpg";
 const academyImg = "/assets/academy.jpg";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
+  loader: async () => {
+    const origin = await getRequestOrigin();
+    return { origin };
+  },
+  head: ({ loaderData }) => ({
     meta: [
       { title: "Chandigarh Beauty Palace & Training Institute | Luxury Salon in Ambala" },
       { name: "description", content: "Premium unisex luxury salon & Gills Makeover Academy in Ambala. Bridal makeup, hair, skin, nails, hair patches & professional beauty courses by Suresh Kumar Gill." },
       { property: "og:title", content: "Chandigarh Beauty Palace & Training Institute" },
       { property: "og:description", content: "Luxury salon & beauty academy in Ambala — where beauty meets elegance." },
       { property: "og:url", content: "/" },
+      { property: "og:image", content: `${loaderData.origin}/assets/logo.png` },
+      { property: "og:image:type", content: "image/png" },
+      { property: "og:image:width", content: "417" },
+      { property: "og:image:height", content: "396" },
+      { property: "og:image:alt", content: "Chandigarh Beauty Palace & Training Institute logo" },
+      { name: "twitter:image", content: `${loaderData.origin}/assets/logo.png` },
+      { name: "twitter:image:alt", content: "Chandigarh Beauty Palace & Training Institute logo" },
     ],
     links: [{ rel: "canonical", href: "/" }],
     scripts: [{
@@ -37,7 +49,7 @@ export const Route = createFileRoute("/")({
         "@context": "https://schema.org",
         "@type": "BeautySalon",
         name: "Chandigarh Beauty Palace & Training Institute",
-        image: storefront.url,
+        image: `${loaderData.origin}${storefront.url}`,
         telephone: "+917206006006",
         email: "sureshkumargill7@gmail.com",
         founder: "Suresh Kumar Gill",
