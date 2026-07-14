@@ -460,15 +460,15 @@ function Academy() {
 
 function Gallery() {
   const shots = [
-    { src: int1.url, alt: "Salon reception" },
+    { src: "/assets/academy/showcase-1.jpg", alt: "Bridal showcase at Gills Makeover Academy" },
     { src: int5.url, alt: "Salon interior" },
-    { src: bridalImg, alt: "Bridal makeup" },
+    { src: "/assets/academy/showcase-3.jpg", alt: "Bridal portrait — student work" },
     { src: int2.url, alt: "Wash station" },
-    { src: nails.url, alt: "Nail art" },
+    { src: "/assets/academy/cert-2.jpg", alt: "Academy certificate ceremony" },
     { src: int6.url, alt: "Styling area" },
-    { src: int3.url, alt: "Nail bar" },
+    { src: "/assets/academy/showcase-4.jpg", alt: "Academy team & students" },
     { src: makeupImg, alt: "Makeup close-up" },
-    { src: int4.url, alt: "Salon floor" },
+    { src: "/assets/academy/cert-3.jpg", alt: "Certified academy graduate" },
   ];
   return (
     <section id="gallery" className="relative bg-gradient-soft py-24 sm:py-32">
