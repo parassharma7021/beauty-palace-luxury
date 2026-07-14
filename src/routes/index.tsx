@@ -250,7 +250,14 @@ function Hero() {
         </div>
         <div className="relative">
           <div className="relative overflow-hidden rounded-[2rem] shadow-luxe ring-1 ring-rose-gold/20">
-            <img src={heroImg} alt="Luxury bridal styling at Chandigarh Beauty Palace" width={1600} height={1808} className="h-[560px] w-full object-cover lg:h-[640px]" />
+            <img
+              src={heroImg}
+              alt="Luxury bridal styling at Chandigarh Beauty Palace"
+              width={1600}
+              height={1808}
+              className="h-auto w-full object-cover object-center"
+              style={{ aspectRatio: "1600 / 1808" }}
+            />
           </div>
           <div className="absolute -bottom-6 -left-6 hidden glass rounded-2xl p-4 shadow-soft md:flex md:items-center md:gap-3">
             <div className="flex -space-x-2">
