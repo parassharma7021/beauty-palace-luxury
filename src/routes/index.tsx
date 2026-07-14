@@ -99,13 +99,18 @@ const SERVICES = [
   { icon: Users, title: "Unisex Salon", desc: "A refined experience curated equally for him and her — grooming redefined." },
 ];
 
-const COURSES = [
-  { title: "Professional Makeup Artistry", duration: "3 Months", level: "Beginner → Pro" },
-  { title: "Advanced Hair Styling", duration: "3 Months", level: "Certified" },
-  { title: "Skin & Beauty Therapy", duration: "2 Months", level: "Diploma" },
-  { title: "Nail Technician Course", duration: "1 Month", level: "Certified" },
-  { title: "Bridal Makeup Masterclass", duration: "6 Weeks", level: "Advanced" },
-  { title: "Complete Beautician Diploma", duration: "6 Months", level: "All-in-One" },
+const DISCIPLINES = [
+  { name: "Makeup Artistry", tag: "Flagship", desc: "Our signature specialisation — bridal, HD, airbrush & editorial makeup mastered under Suresh Kumar Gill." },
+  { name: "Hair Styling", tag: "Craft", desc: "Cuts, colour, chemical services, hair patch application, extensions & advanced styling." },
+  { name: "Skin & Beauty", tag: "Science", desc: "Facials, advanced skincare, chemical peels, threading and result-driven beauty therapy." },
+  { name: "Nail Craft", tag: "Artistry", desc: "Extensions, gel, chrome, French, 3D & couture nail art in a professional nail bar." },
+];
+
+const TRACKS = [
+  { tier: "Masterclass", duration: "3 · 7 · 15 Days", tag: "Intensive", desc: "Focused short-format masterclasses across every discipline — ideal for skill upgrades and new specialisations." },
+  { tier: "Certification", duration: "1 Month", tag: "Professional", desc: "Career-ready certification with salon-floor practice, live model sessions and industry-recognised credentials." },
+  { tier: "Diploma", duration: "6 Months", tag: "Advanced", desc: "An in-depth diploma covering advanced techniques, portfolio building, client handling and salon business basics." },
+  { tier: "Diploma Pro", duration: "1 Year", tag: "Elite", desc: "Our flagship year-long program — a complete transformation into a master beauty professional, mentored end-to-end." },
 ];
 
 const TESTIMONIALS = [
