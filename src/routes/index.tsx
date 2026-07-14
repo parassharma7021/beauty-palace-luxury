@@ -740,7 +740,7 @@ function Footer() {
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-4 py-6 text-xs text-white/50 sm:flex-row sm:px-6">
           <div>© {new Date().getFullYear()} Chandigarh Beauty Palace & Training Institute. All rights reserved.</div>
-          <div>Crafted with <Heart className="inline h-3 w-3 fill-rose-gold text-rose-gold" /> in Ambala</div>
+          <div>Crafted by <a href="#" className="font-medium text-rose-gold hover:text-white transition-colors">Glamora Digital</a></div>
         </div>
       </div>
     </footer>
