@@ -222,7 +222,7 @@ function Hero() {
             A luxury unisex salon and premier beauty academy crafted by <strong className="text-foreground">Suresh Kumar Gill</strong>.
             Signature bridal artistry, expert hair &amp; skin rituals, and career-defining beauty education under one roof.
           </p>
-          <div className="mt-8 flex flex-wrap gap-4">
+          <div className="mt-8 flex flex-wrap items-center gap-4">
             <a href={WHATSAPP} target="_blank" rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-full bg-gradient-rose px-7 py-3.5 text-sm font-medium text-white shadow-luxe transition-transform hover:scale-105">
               <MessageCircle className="h-4 w-4" /> Book an Appointment
@@ -231,6 +231,16 @@ function Hero() {
               className="inline-flex items-center gap-2 rounded-full border border-rose-gold/40 bg-white/60 px-7 py-3.5 text-sm font-medium text-plum backdrop-blur hover:bg-white">
               Explore Academy <ChevronDown className="h-4 w-4" />
             </a>
+            <div className="flex items-center gap-2 pl-1">
+              <a href={INSTAGRAM} target="_blank" rel="noreferrer" aria-label="Instagram"
+                className="grid h-11 w-11 place-items-center rounded-full glass ring-1 ring-rose-gold/30 text-rose-gold-deep transition-all hover:bg-gradient-rose hover:text-white hover:scale-110">
+                <Instagram className="h-4.5 w-4.5" />
+              </a>
+              <a href={FACEBOOK} target="_blank" rel="noreferrer" aria-label="Facebook"
+                className="grid h-11 w-11 place-items-center rounded-full glass ring-1 ring-rose-gold/30 text-rose-gold-deep transition-all hover:bg-gradient-rose hover:text-white hover:scale-110">
+                <Facebook className="h-4.5 w-4.5" />
+              </a>
+            </div>
           </div>
           <div className="mt-10 flex flex-wrap gap-8 text-sm">
             <Stat n="25+" label="Years of Artistry" />
