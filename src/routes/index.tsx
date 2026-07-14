@@ -99,13 +99,18 @@ const SERVICES = [
   { icon: Users, title: "Unisex Salon", desc: "A refined experience curated equally for him and her — grooming redefined." },
 ];
 
-const COURSES = [
-  { title: "Professional Makeup Artistry", duration: "3 Months", level: "Beginner → Pro" },
-  { title: "Advanced Hair Styling", duration: "3 Months", level: "Certified" },
-  { title: "Skin & Beauty Therapy", duration: "2 Months", level: "Diploma" },
-  { title: "Nail Technician Course", duration: "1 Month", level: "Certified" },
-  { title: "Bridal Makeup Masterclass", duration: "6 Weeks", level: "Advanced" },
-  { title: "Complete Beautician Diploma", duration: "6 Months", level: "All-in-One" },
+const DISCIPLINES = [
+  { name: "Makeup Artistry", tag: "Flagship", desc: "Our signature specialisation — bridal, HD, airbrush & editorial makeup mastered under Suresh Kumar Gill." },
+  { name: "Hair Styling", tag: "Craft", desc: "Cuts, colour, chemical services, hair patch application, extensions & advanced styling." },
+  { name: "Skin & Beauty", tag: "Science", desc: "Facials, advanced skincare, chemical peels, threading and result-driven beauty therapy." },
+  { name: "Nail Craft", tag: "Artistry", desc: "Extensions, gel, chrome, French, 3D & couture nail art in a professional nail bar." },
+];
+
+const TRACKS = [
+  { tier: "Masterclass", duration: "3 · 7 · 15 Days", tag: "Intensive", desc: "Focused short-format masterclasses across every discipline — ideal for skill upgrades and new specialisations." },
+  { tier: "Certification", duration: "1 Month", tag: "Professional", desc: "Career-ready certification with salon-floor practice, live model sessions and industry-recognised credentials." },
+  { tier: "Diploma", duration: "6 Months", tag: "Advanced", desc: "An in-depth diploma covering advanced techniques, portfolio building, client handling and salon business basics." },
+  { tier: "Diploma Pro", duration: "1 Year", tag: "Elite", desc: "Our flagship year-long program — a complete transformation into a master beauty professional, mentored end-to-end." },
 ];
 
 const TESTIMONIALS = [
@@ -217,7 +222,7 @@ function Hero() {
             A luxury unisex salon and premier beauty academy crafted by <strong className="text-foreground">Suresh Kumar Gill</strong>.
             Signature bridal artistry, expert hair &amp; skin rituals, and career-defining beauty education under one roof.
           </p>
-          <div className="mt-8 flex flex-wrap gap-4">
+          <div className="mt-8 flex flex-wrap items-center gap-4">
             <a href={WHATSAPP} target="_blank" rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-full bg-gradient-rose px-7 py-3.5 text-sm font-medium text-white shadow-luxe transition-transform hover:scale-105">
               <MessageCircle className="h-4 w-4" /> Book an Appointment
@@ -226,6 +231,16 @@ function Hero() {
               className="inline-flex items-center gap-2 rounded-full border border-rose-gold/40 bg-white/60 px-7 py-3.5 text-sm font-medium text-plum backdrop-blur hover:bg-white">
               Explore Academy <ChevronDown className="h-4 w-4" />
             </a>
+            <div className="flex items-center gap-2 pl-1">
+              <a href={INSTAGRAM} target="_blank" rel="noreferrer" aria-label="Instagram"
+                className="grid h-11 w-11 place-items-center rounded-full glass ring-1 ring-rose-gold/30 text-rose-gold-deep transition-all hover:bg-gradient-rose hover:text-white hover:scale-110">
+                <Instagram className="h-4.5 w-4.5" />
+              </a>
+              <a href={FACEBOOK} target="_blank" rel="noreferrer" aria-label="Facebook"
+                className="grid h-11 w-11 place-items-center rounded-full glass ring-1 ring-rose-gold/30 text-rose-gold-deep transition-all hover:bg-gradient-rose hover:text-white hover:scale-110">
+                <Facebook className="h-4.5 w-4.5" />
+              </a>
+            </div>
           </div>
           <div className="mt-10 flex flex-wrap gap-8 text-sm">
             <Stat n="25+" label="Years of Artistry" />
@@ -357,35 +372,85 @@ function Services() {
 function Academy() {
   return (
     <section id="academy" className="relative py-24 sm:py-32">
-      <div className="mx-auto grid max-w-7xl gap-14 px-4 sm:px-6 lg:grid-cols-2 lg:items-center">
-        <div className="order-2 lg:order-1">
-          <span className="text-xs uppercase tracking-[0.3em] text-rose-gold-deep">Gills Makeover Academy</span>
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-blush/30 to-transparent" />
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="mx-auto max-w-3xl text-center">
+          <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-rose-gold-deep">
+            <GraduationCap className="h-3.5 w-3.5" /> Gills Makeover Academy
+          </span>
           <h2 className="mt-4 font-serif text-4xl leading-tight text-plum sm:text-5xl">
-            Build a Career in <span className="italic text-gradient-rose">Beauty</span>
+            A Premier Institute for <span className="italic text-gradient-rose">Beauty Professionals</span>
           </h2>
-          <p className="mt-6 text-muted-foreground leading-relaxed">
-            Learn from India's leading beauty educators. Our courses combine timeless craft with the latest global techniques, offering real-world salon experience so you graduate ready to lead.
+          <p className="mt-5 text-muted-foreground leading-relaxed">
+            Four disciplines. Four learning tracks. One legacy of excellence. Every course is taught hands-on by industry mentors, with real salon-floor experience and certification recognised across the industry.
           </p>
-          <div className="mt-8 grid gap-3 sm:grid-cols-2">
-            {COURSES.map((c) => (
-              <div key={c.title} className="group rounded-2xl border border-rose-gold/20 bg-white p-5 transition-all hover:border-rose-gold hover:shadow-soft">
-                <div className="flex items-center gap-2 text-[10px] uppercase tracking-widest text-rose-gold-deep">
-                  <Clock className="h-3 w-3" /> {c.duration} · {c.level}
+        </div>
+
+        {/* Disciplines */}
+        <div className="mt-14">
+          <div className="mb-6 flex items-end justify-between">
+            <h3 className="font-serif text-2xl text-plum sm:text-3xl">Disciplines We Teach</h3>
+            <span className="hidden text-[10px] uppercase tracking-widest text-muted-foreground sm:block">Choose your craft</span>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {DISCIPLINES.map((d, i) => (
+              <div key={d.name}
+                className={`group relative overflow-hidden rounded-3xl border p-6 transition-all hover:-translate-y-1 hover:shadow-luxe ${i === 0 ? "border-rose-gold bg-gradient-rose text-white shadow-luxe" : "border-rose-gold/20 bg-white shadow-soft"}`}>
+                <div className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[10px] uppercase tracking-widest ${i === 0 ? "bg-white/25 text-white" : "bg-blush/40 text-rose-gold-deep"}`}>
+                  <Sparkles className="h-3 w-3" /> {d.tag}
                 </div>
-                <div className="mt-2 font-serif text-lg text-plum">{c.title}</div>
+                <h4 className={`mt-4 font-serif text-xl ${i === 0 ? "text-white" : "text-plum"}`}>{d.name}</h4>
+                <p className={`mt-2 text-sm leading-relaxed ${i === 0 ? "text-white/90" : "text-muted-foreground"}`}>{d.desc}</p>
               </div>
             ))}
           </div>
-          <a href={WHATSAPP} target="_blank" rel="noreferrer"
-            className="mt-10 inline-flex items-center gap-2 rounded-full bg-gradient-rose px-7 py-3.5 text-sm font-medium text-white shadow-luxe hover:scale-105 transition-transform">
-            <GraduationCap className="h-4 w-4" /> Enquire About Admission
-          </a>
         </div>
-        <div className="order-1 lg:order-2 relative">
-          <div className="grid grid-cols-2 gap-4">
-            <img src={academyImg} alt="Beauty academy" className="col-span-2 h-64 w-full rounded-3xl object-cover shadow-luxe sm:h-80" />
-            <img src={makeupImg} alt="Makeup" className="h-48 w-full rounded-2xl object-cover shadow-soft sm:h-56" />
-            <img src={bridalImg} alt="Bridal artistry" className="h-48 w-full rounded-2xl object-cover shadow-soft sm:h-56" />
+
+        {/* Learning tracks */}
+        <div className="mt-16">
+          <div className="mb-6 flex items-end justify-between">
+            <h3 className="font-serif text-2xl text-plum sm:text-3xl">Learning Tracks</h3>
+            <span className="hidden text-[10px] uppercase tracking-widest text-muted-foreground sm:block">Available across all disciplines</span>
+          </div>
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {TRACKS.map((t) => (
+              <div key={t.tier}
+                className="group relative overflow-hidden rounded-3xl bg-white p-7 shadow-soft ring-1 ring-rose-gold/10 transition-all hover:-translate-y-1 hover:shadow-luxe">
+                <div className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-blush/40 blur-2xl transition-opacity group-hover:opacity-100 opacity-60" />
+                <div className="relative">
+                  <div className="text-[10px] uppercase tracking-[0.25em] text-rose-gold-deep">{t.tag}</div>
+                  <div className="mt-2 font-serif text-2xl text-plum">{t.tier}</div>
+                  <div className="mt-1 flex items-center gap-1.5 text-sm text-rose-gold-deep">
+                    <Clock className="h-3.5 w-3.5" /> {t.duration}
+                  </div>
+                  <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{t.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* CTA + showcase */}
+        <div className="mt-16 grid gap-10 lg:grid-cols-5 lg:items-center">
+          <div className="lg:col-span-2">
+            <p className="text-muted-foreground leading-relaxed">
+              Whether you want a quick masterclass or a full diploma, our curriculum is structured to make you industry-ready. Ask about admissions, batch dates, fees and scholarship options.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <a href={WHATSAPP} target="_blank" rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-gradient-rose px-7 py-3.5 text-sm font-medium text-white shadow-luxe hover:scale-105 transition-transform">
+                <GraduationCap className="h-4 w-4" /> Enquire About Admission
+              </a>
+              <a href="#gallery"
+                className="inline-flex items-center gap-2 rounded-full border border-rose-gold/40 bg-white px-6 py-3.5 text-sm font-medium text-plum hover:bg-blush/30">
+                View Student Work
+              </a>
+            </div>
+          </div>
+          <div className="lg:col-span-3 grid grid-cols-2 gap-4">
+            <img src="/assets/academy/showcase-2.jpg" alt="Gills Makeover Academy seminar with students" className="col-span-2 h-64 w-full rounded-3xl object-cover shadow-luxe sm:h-80" />
+            <img src="/assets/academy/cert-1.jpg" alt="Academy certificate presentation" className="h-48 w-full rounded-2xl object-cover shadow-soft sm:h-56" />
+            <img src="/assets/academy/showcase-4.jpg" alt="Academy masterclass moment" className="h-48 w-full rounded-2xl object-cover shadow-soft sm:h-56" />
           </div>
         </div>
       </div>
@@ -395,15 +460,15 @@ function Academy() {
 
 function Gallery() {
   const shots = [
-    { src: int1.url, alt: "Salon reception" },
+    { src: "/assets/academy/showcase-1.jpg", alt: "Bridal showcase at Gills Makeover Academy" },
     { src: int5.url, alt: "Salon interior" },
-    { src: bridalImg, alt: "Bridal makeup" },
+    { src: "/assets/academy/showcase-3.jpg", alt: "Bridal portrait — student work" },
     { src: int2.url, alt: "Wash station" },
-    { src: nails.url, alt: "Nail art" },
+    { src: "/assets/academy/cert-2.jpg", alt: "Academy certificate ceremony" },
     { src: int6.url, alt: "Styling area" },
-    { src: int3.url, alt: "Nail bar" },
+    { src: "/assets/academy/showcase-4.jpg", alt: "Academy team & students" },
     { src: makeupImg, alt: "Makeup close-up" },
-    { src: int4.url, alt: "Salon floor" },
+    { src: "/assets/academy/cert-3.jpg", alt: "Certified academy graduate" },
   ];
   return (
     <section id="gallery" className="relative bg-gradient-soft py-24 sm:py-32">
@@ -675,7 +740,7 @@ function Footer() {
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-4 py-6 text-xs text-white/50 sm:flex-row sm:px-6">
           <div>© {new Date().getFullYear()} Chandigarh Beauty Palace & Training Institute. All rights reserved.</div>
-          <div>Crafted with <Heart className="inline h-3 w-3 fill-rose-gold text-rose-gold" /> in Ambala</div>
+          <div>Crafted by <a href="#" className="font-medium text-rose-gold hover:text-white transition-colors">Glamora Digital</a></div>
         </div>
       </div>
     </footer>
