@@ -362,35 +362,85 @@ function Services() {
 function Academy() {
   return (
     <section id="academy" className="relative py-24 sm:py-32">
-      <div className="mx-auto grid max-w-7xl gap-14 px-4 sm:px-6 lg:grid-cols-2 lg:items-center">
-        <div className="order-2 lg:order-1">
-          <span className="text-xs uppercase tracking-[0.3em] text-rose-gold-deep">Gills Makeover Academy</span>
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-blush/30 to-transparent" />
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="mx-auto max-w-3xl text-center">
+          <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-rose-gold-deep">
+            <GraduationCap className="h-3.5 w-3.5" /> Gills Makeover Academy
+          </span>
           <h2 className="mt-4 font-serif text-4xl leading-tight text-plum sm:text-5xl">
-            Build a Career in <span className="italic text-gradient-rose">Beauty</span>
+            A Premier Institute for <span className="italic text-gradient-rose">Beauty Professionals</span>
           </h2>
-          <p className="mt-6 text-muted-foreground leading-relaxed">
-            Learn from India's leading beauty educators. Our courses combine timeless craft with the latest global techniques, offering real-world salon experience so you graduate ready to lead.
+          <p className="mt-5 text-muted-foreground leading-relaxed">
+            Four disciplines. Four learning tracks. One legacy of excellence. Every course is taught hands-on by industry mentors, with real salon-floor experience and certification recognised across the industry.
           </p>
-          <div className="mt-8 grid gap-3 sm:grid-cols-2">
-            {COURSES.map((c) => (
-              <div key={c.title} className="group rounded-2xl border border-rose-gold/20 bg-white p-5 transition-all hover:border-rose-gold hover:shadow-soft">
-                <div className="flex items-center gap-2 text-[10px] uppercase tracking-widest text-rose-gold-deep">
-                  <Clock className="h-3 w-3" /> {c.duration} · {c.level}
+        </div>
+
+        {/* Disciplines */}
+        <div className="mt-14">
+          <div className="mb-6 flex items-end justify-between">
+            <h3 className="font-serif text-2xl text-plum sm:text-3xl">Disciplines We Teach</h3>
+            <span className="hidden text-[10px] uppercase tracking-widest text-muted-foreground sm:block">Choose your craft</span>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {DISCIPLINES.map((d, i) => (
+              <div key={d.name}
+                className={`group relative overflow-hidden rounded-3xl border p-6 transition-all hover:-translate-y-1 hover:shadow-luxe ${i === 0 ? "border-rose-gold bg-gradient-rose text-white shadow-luxe" : "border-rose-gold/20 bg-white shadow-soft"}`}>
+                <div className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[10px] uppercase tracking-widest ${i === 0 ? "bg-white/25 text-white" : "bg-blush/40 text-rose-gold-deep"}`}>
+                  <Sparkles className="h-3 w-3" /> {d.tag}
                 </div>
-                <div className="mt-2 font-serif text-lg text-plum">{c.title}</div>
+                <h4 className={`mt-4 font-serif text-xl ${i === 0 ? "text-white" : "text-plum"}`}>{d.name}</h4>
+                <p className={`mt-2 text-sm leading-relaxed ${i === 0 ? "text-white/90" : "text-muted-foreground"}`}>{d.desc}</p>
               </div>
             ))}
           </div>
-          <a href={WHATSAPP} target="_blank" rel="noreferrer"
-            className="mt-10 inline-flex items-center gap-2 rounded-full bg-gradient-rose px-7 py-3.5 text-sm font-medium text-white shadow-luxe hover:scale-105 transition-transform">
-            <GraduationCap className="h-4 w-4" /> Enquire About Admission
-          </a>
         </div>
-        <div className="order-1 lg:order-2 relative">
-          <div className="grid grid-cols-2 gap-4">
-            <img src={academyImg} alt="Beauty academy" className="col-span-2 h-64 w-full rounded-3xl object-cover shadow-luxe sm:h-80" />
-            <img src={makeupImg} alt="Makeup" className="h-48 w-full rounded-2xl object-cover shadow-soft sm:h-56" />
-            <img src={bridalImg} alt="Bridal artistry" className="h-48 w-full rounded-2xl object-cover shadow-soft sm:h-56" />
+
+        {/* Learning tracks */}
+        <div className="mt-16">
+          <div className="mb-6 flex items-end justify-between">
+            <h3 className="font-serif text-2xl text-plum sm:text-3xl">Learning Tracks</h3>
+            <span className="hidden text-[10px] uppercase tracking-widest text-muted-foreground sm:block">Available across all disciplines</span>
+          </div>
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {TRACKS.map((t) => (
+              <div key={t.tier}
+                className="group relative overflow-hidden rounded-3xl bg-white p-7 shadow-soft ring-1 ring-rose-gold/10 transition-all hover:-translate-y-1 hover:shadow-luxe">
+                <div className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-blush/40 blur-2xl transition-opacity group-hover:opacity-100 opacity-60" />
+                <div className="relative">
+                  <div className="text-[10px] uppercase tracking-[0.25em] text-rose-gold-deep">{t.tag}</div>
+                  <div className="mt-2 font-serif text-2xl text-plum">{t.tier}</div>
+                  <div className="mt-1 flex items-center gap-1.5 text-sm text-rose-gold-deep">
+                    <Clock className="h-3.5 w-3.5" /> {t.duration}
+                  </div>
+                  <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{t.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* CTA + showcase */}
+        <div className="mt-16 grid gap-10 lg:grid-cols-5 lg:items-center">
+          <div className="lg:col-span-2">
+            <p className="text-muted-foreground leading-relaxed">
+              Whether you want a quick masterclass or a full diploma, our curriculum is structured to make you industry-ready. Ask about admissions, batch dates, fees and scholarship options.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <a href={WHATSAPP} target="_blank" rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-gradient-rose px-7 py-3.5 text-sm font-medium text-white shadow-luxe hover:scale-105 transition-transform">
+                <GraduationCap className="h-4 w-4" /> Enquire About Admission
+              </a>
+              <a href="#gallery"
+                className="inline-flex items-center gap-2 rounded-full border border-rose-gold/40 bg-white px-6 py-3.5 text-sm font-medium text-plum hover:bg-blush/30">
+                View Student Work
+              </a>
+            </div>
+          </div>
+          <div className="lg:col-span-3 grid grid-cols-2 gap-4">
+            <img src="/assets/academy/showcase-2.jpg" alt="Gills Makeover Academy seminar with students" className="col-span-2 h-64 w-full rounded-3xl object-cover shadow-luxe sm:h-80" />
+            <img src="/assets/academy/cert-1.jpg" alt="Academy certificate presentation" className="h-48 w-full rounded-2xl object-cover shadow-soft sm:h-56" />
+            <img src="/assets/academy/showcase-4.jpg" alt="Academy masterclass moment" className="h-48 w-full rounded-2xl object-cover shadow-soft sm:h-56" />
           </div>
         </div>
       </div>
